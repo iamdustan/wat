@@ -1,25 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  compose,
   shouldUpdate,
   getContext,
   withContext,
 } from 'recompose';
+import store from './store';
+import GrandChild from './GrandChild';
 
-const enhance = withContext(
-  {
-    store: PropTypes.object,
-  },
-  (props) => (
-    console.log('withContext', props),
-    {
-      store
-    }
-  )
-)
+const enhance = compose(
+  withContext(
+    {store: PropTypes.object},
+    (props) => (store)
+  ),
+  getContext({store: PropTypes.object})
+);
 
-class GrandChildContainer extends React.PureComponent {
+class GrandChildContainer extends React.Component {
   render() {
+    console.log('GrandChildContainer');
     return (
       <GrandChild
         item={this.props.store.item}

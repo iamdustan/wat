@@ -7,14 +7,17 @@ type Props = {
   singularName: string,
 };
 
+const Text = props => <span {...props}/>
+
 export default class GrandChild extends React.Component {
   shouldComponentUpdate(nextProps) {
     return Boolean(nextProps.item);
   }
 
   render() {
+    console.log('GrandChild');
     return (
-      <Text>{this.renderSaveButtonText(item, collection)}</Text>
+      <Text>{this.renderSaveButtonText()}</Text>
     );
   }
 
