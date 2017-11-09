@@ -9,8 +9,8 @@ type Props = {
 
 const Text = props => <span {...props}/>
 
-export default class GrandChild extends React.Component {
-  shouldComponentUpdate(nextProps) {
+export default class GrandChild extends React.Component<Props> {
+  shouldComponentUpdate(nextProps: Props) {
     return Boolean(nextProps.item);
   }
 
